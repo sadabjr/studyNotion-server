@@ -10,7 +10,6 @@ const mailSender = async (email, title, body) => {
       },
     });
 
-
     // to send the mail (function)
     let info = await transporter.sendMail({
       form: "StudyNotion || SadabInfoTech - by Sadab Ali",
@@ -20,8 +19,6 @@ const mailSender = async (email, title, body) => {
     });
     console.log(info);
     return info;
-
-
   } catch (error) {
     console.log(error.message);
   }
