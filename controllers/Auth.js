@@ -64,10 +64,33 @@ exports.sendOTP = async (req, res) => {
 
 exports.signUp = (req, res) => {
     // data fetch form request ki body
-    
+    const {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        accountType,
+        contactNumber,
+        otp
+    } = req.body
     // data ko validate kr lo
 
-    // 2no passwords ko match kr lo
+    if(!firstName || !lastName || !email || !password || !confirmPassword || !otp){
+        return res.status(403).json({
+            success:false,
+            message:"All fields are require"
+        })
+    }
+
+    // 2. passwords ko match kr lo
+
+    if(password !== confirmPassword){
+        return res.status(400).json({
+            success:false,
+            message:"Password and confirm Password Value does not match, please try again"
+        })
+    }
 
     // check user already exist or not
 
